@@ -24,13 +24,14 @@ local config = {
                 -- },
         },
         -- Set colorscheme to use
-        colorscheme = "nord",
+        colorscheme = "onenord",
         -- Add highlight groups in any theme
         highlights = {
                 init = {
                         -- this table overrides highlights in all themes
                         -- Normal = { bg = "none" },
                         NotifyBackground = { bg = "#ffffff" },
+                        Pmenu = { bg = "none" }
                 }
                 -- duskfox = { -- a table of overrides/changes to the duskfox theme
                 --   Normal = { bg = "#000000" },
@@ -119,7 +120,7 @@ local config = {
                         notify = true,
                         ["nvim-tree"] = false,
                         ["nvim-web-devicons"] = true,
-                        rainbow = false,
+                        rainbow = true,
                         symbols_outline = false,
                         telescope = true,
                         treesitter = true,
@@ -243,6 +244,25 @@ local config = {
                         },
                         {
                                 "kylechui/nvim-surround"
+                        },
+                        {
+                                "rmehri01/onenord.nvim",
+                                as = "onenord",
+                                config = function()
+                                        require("onenord").setup {
+                                                theme = "dark",
+                                                borders = true,
+                                                fade_nc = true,
+                                                disable = {
+                                                        background = true
+                                                },
+                                                custom_highlights = {
+                                                        rainbowcol1 = {
+                                                                fg = "#ffffff",
+                                                        }
+                                                }
+                                        }
+                                end
                         }
                         -- You can disable default plugins as follows:
                         -- ["goolord/alpha-nvim"] = { disable = true },
